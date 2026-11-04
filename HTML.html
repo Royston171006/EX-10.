@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Review Blog</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+        }
+
+        header {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            background: #e63946;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-weight: bold;
+        }
+
+        h2 {
+            text-align: center;
+            color: #222;
+        }
+
+        .movies {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .movie {
+            background: white;
+            width: 250px;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #aaa;
+        }
+
+        .movie img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .rating {
+            color: orange;
+            font-weight: bold;
+        }
+
+        .review {
+            padding: 20px;
+            text-align: center;
+        }
+
+        input, textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 8px;
+        }
+
+        button {
+            background: #e63946;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🎬 Movie Review Blog</h1>
+        <p>Explore Movies and Share Your Reviews</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#movies">Movies</a>
+        <a href="#review">Write Review</a>
+    </nav>
+
+    <section id="home">
+        <h2>Welcome to Movie Review Blog</h2>
+        <p style="text-align:center;">
+            Discover popular movies, read reviews and share your opinions.
+        </p>
+    </section>
+
+    <section id="movies">
+        <h2>Popular Movies</h2>
+
+        <div class="movies">
+
+            <div class="movie">
+                <img src="https://placehold.co/250x300?text=Leo"
+                     alt="Leo Movie">
+                <h3>Leo</h3>
+                <p>Action / Thriller</p>
+                <p class="rating">⭐ 8.5/10</p>
+                <p>An action-packed movie with an exciting story.</p>
+            </div>
+
+            <div class="movie">
+                <img src="https://placehold.co/250x300?text=Vikram"
+                     alt="Vikram Movie">
+                <h3>Vikram</h3>
+                <p>Action / Crime</p>
+                <p class="rating">⭐ 9/10</p>
+                <p>A thrilling action movie with powerful performances.</p>
+            </div>
+
+            <div class="movie">
+                <img src="https://placehold.co/250x300?text=Jailer"
+                     alt="Jailer Movie">
+                <h3>Jailer</h3>
+                <p>Action / Comedy</p>
+                <p class="rating">⭐ 8/10</p>
+                <p>An entertaining movie with excellent action scenes.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="review" class="review">
+        <h2>Write Your Movie Review</h2>
+
+        <form onsubmit="addReview(event)">
+            <input type="text" id="username"
+                   placeholder="Enter Your Name" required><br>
+
+            <input type="text" id="moviename"
+                   placeholder="Enter Movie Name" required><br>
+
+            <textarea id="comment"
+                      placeholder="Write Your Review"
+                      required></textarea><br>
+
+            <button type="submit">Submit Review</button>
+        </form>
+
+        <h2>Recent Reviews</h2>
+        <div id="reviews"></div>
+    </section>
+
+    <footer>
+        <p>© 2026 Movie Review Blog | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        function addReview(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("username").value;
+            let movie = document.getElementById("moviename").value;
+            let comment = document.getElementById("comment").value;
+
+            let review = document.createElement("div");
+
+            review.innerHTML =
+                "<h3>" + movie + "</h3>" +
+                "<p>By: " + name + "</p>" +
+                "<p>" + comment + "</p><hr>";
+
+            document.getElementById("reviews").appendChild(review);
+
+            document.querySelector("form").reset();
+        }
+    </script>
+
+</body>
+</html>
